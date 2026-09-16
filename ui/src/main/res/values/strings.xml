@@ -72,6 +72,8 @@
     <string name="dashboard_status_disconnected">Ready to connect</string>
     <string name="dashboard_current_profile">Current profile</string>
     <string name="dashboard_no_profile">No profile selected</string>
+    <string name="dashboard_profiles_hint">Create a profile to organize and optimize your tunnels</string>
+    <string name="dashboard_stat_not_available">--</string>
     <string name="dashboard_latency">Latency</string>
     <string name="dashboard_packet_loss">Packet loss</string>
     <string name="dashboard_handshake">Handshake</string>

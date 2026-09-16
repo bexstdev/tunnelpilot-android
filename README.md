@@ -1,8 +1,17 @@
-# Android GUI for [WireGuard](https://www.wireguard.com/)
+# TunnelPilot for Android
+
+TunnelPilot is an intelligent connectivity manager built on the official
+[WireGuard Android project](https://git.zx2c4.com/wireguard-android/). It organizes
+standard WireGuard configurations into a polished management experience without
+changing the WireGuard protocol, cryptography, or networking implementation.
+
+TunnelPilot is provider-agnostic and remains compatible with standard WireGuard
+configuration files. The upstream WireGuard project and its contributors retain
+their original copyright and Apache 2.0 licensing.
 
 **[Download from the Play Store](https://play.google.com/store/apps/details?id=com.wireguard.android)**
 
-This is an Android GUI for [WireGuard](https://www.wireguard.com/). It [opportunistically uses the kernel implementation](https://git.zx2c4.com/android_kernel_wireguard/about/), and falls back to using the non-root [userspace implementation](https://git.zx2c4.com/wireguard-go/about/).
+The application [opportunistically uses the kernel implementation](https://git.zx2c4.com/android_kernel_wireguard/about/), and falls back to using the non-root [userspace implementation](https://git.zx2c4.com/wireguard-go/about/).
 
 ## Building
 

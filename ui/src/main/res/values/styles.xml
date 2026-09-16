@@ -20,7 +20,7 @@
     <style name="AppTheme" parent="AppThemeBase" />
 
     <style name="WireGuardTheme.MaterialCardView" parent="Widget.Material3.CardView.Elevated">
-        <item name="cornerRadius">4dp</item>
+        <item name="cornerRadius">16dp</item>
         <item name="contentPadding">8dp</item>
     </style>
 

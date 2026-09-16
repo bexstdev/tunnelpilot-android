@@ -1,0 +1,68 @@
+name: Build TunnelPilot
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Android APKs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      # A single Gradle invocation keeps the build fail-fast while producing
+      # both the debug and unsigned release APKs.
+      - name: Build Debug and unsigned Release APKs
+        run: ./gradlew --no-daemon assembleDebug assembleRelease
+
+      - name: Upload Debug APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: TunnelPilot-debug
+          path: '**/build/outputs/apk/debug/*.apk'
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload Release APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: TunnelPilot-release
+          path: '**/build/outputs/apk/release/*.apk'
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload build and test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TunnelPilot-reports
+          path: |
+            **/build/reports/**
+            **/build/test-results/**
+          if-no-files-found: ignore
+          retention-days: 30
